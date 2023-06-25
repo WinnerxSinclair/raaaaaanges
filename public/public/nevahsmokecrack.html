@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .xd {
+      text-align: left;
+      margin-left: 20px;
+    }
+
+    .image-container {
+      display: flex;
+    }
+
+    img {
+      max-width: 550px;
+    }
+
+    button {
+      margin-right: 5px;
+    }
+
+    button.active {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="lmaoxdxd">
+    <button id="generate-btn">rand</button>
+    
+    <div id="random-number"></div>
+  </div>
+  <div class="xd">
+    <div>
+      <button id="rfi-btn">RFI</button>
+      <button id="defend-btn">Defend</button>
+    </div>
+
+    <div>
+      <button id="stack-15bb-btn">15BB</button>
+      <button id="stack-25bb-btn">25BB</button>
+      <button id="stack-40bb-btn">40BB</button>
+      <button id="stack-60bb-btn">60BB</button>
+      <button id="stack-100bb-btn">100BB</button>
+    </div>
+
+    <div>
+      <button id="hero-sb-btn">SB</button>
+      <button id="hero-bb-btn">BB</button>
+      <button id="hero-bu-btn">BU</button>
+      <button id="hero-co-btn">CO</button>
+      <button id="hero-hj-btn">HJ</button>
+      <button id="hero-lj-btn">LJ</button>
+      <button id="hero-utg+2-btn">UTG+2</button>
+      <button id="hero-utg+1-btn">UTG+1</button>
+      <button id="hero-utg-btn">UTG</button>
+    </div>
+
+    <div>
+      <button id="villian-sb-btn">SB</button>
+      <button id="villian-bb-btn">BB</button>
+      <button id="villian-bu-btn">BU</button>
+      <button id="villian-co-btn">CO</button>
+      <button id="villian-hj-btn">HJ</button>
+      <button id="villian-lj-btn">LJ</button>
+      <button id="villian-utg+2-btn">UTG+2</button>
+      <button id="villian-utg+1-btn">UTG+1</button>
+      <button id="villian-utg-btn">UTG</button>
+    </div>
+
+    <div class="image-container">
+      <img id="picture-1" src="">
+      <img id="picture-2" src="">
+      <img id="picture-3" src="">
+      <img id="picture-4" src="">
+    </div>
+  </div>
+
+  <script>
+    var generateBtn = document.getElementById('generate-btn');
+    var randomNumberDisplay = document.getElementById('random-number');
+    var rfiBtn = document.getElementById('rfi-btn');
+    var defendBtn = document.getElementById('defend-btn');
+    var stack15bbBtn = document.getElementById('stack-15bb-btn');
+    var stack25bbBtn = document.getElementById('stack-25bb-btn');
+    var stack40bbBtn = document.getElementById('stack-40bb-btn');
+    var stack60bbBtn = document.getElementById('stack-60bb-btn');
+    var stack100bbBtn = document.getElementById('stack-100bb-btn');
+    var heroSbBtn = document.getElementById('hero-sb-btn');
+    var heroBbBtn = document.getElementById('hero-bb-btn');
+    var heroBuBtn = document.getElementById('hero-bu-btn');
+    var heroCoBtn = document.getElementById('hero-co-btn');
+    var heroHjBtn = document.getElementById('hero-hj-btn');
+    var heroLjBtn = document.getElementById('hero-lj-btn');
+    var heroUtg2Btn = document.getElementById('hero-utg+2-btn');
+    var heroUtg1Btn = document.getElementById('hero-utg+1-btn');
+    var heroUtgBtn = document.getElementById('hero-utg-btn');
+    var villianSbBtn = document.getElementById('villian-sb-btn');
+    var villianBbBtn = document.getElementById('villian-bb-btn');
+    var villianBuBtn = document.getElementById('villian-bu-btn');
+    var villianCoBtn = document.getElementById('villian-co-btn');
+    var villianHjBtn = document.getElementById('villian-hj-btn');
+    var villianLjBtn = document.getElementById('villian-lj-btn');
+    var villianUtg2Btn = document.getElementById('villian-utg+2-btn');
+    var villianUtg1Btn = document.getElementById('villian-utg+1-btn');
+    var villianUtgBtn = document.getElementById('villian-utg-btn');
+    var picture1 = document.getElementById('picture-1');
+    var picture2 = document.getElementById('picture-2');
+    var picture3 = document.getElementById('picture-3');
+    var picture4 = document.getElementById('picture-4');
+
+    var Type = '';
+    var StackDepth = '';
+    var HeroPosition = '';
+    var VillianPosition = '';
+    var randomNumber = null;
+
+    generateBtn.addEventListener('click', function() {
+      var randomNumber = Math.floor(Math.random() * 101);
+      randomNumberDisplay.textContent = randomNumber;
+    });
+
+    rfiBtn.addEventListener('click', function() {
+      Type = 'RFI';
+      updatePictureUrls();
+    });
+
+    defendBtn.addEventListener('click', function() {
+      Type = 'Defend';
+      updatePictureUrls();
+    });
+
+    stack15bbBtn.addEventListener('click', function() {
+      StackDepth = '15BB';
+      updatePictureUrls();
+    });
+
+    stack25bbBtn.addEventListener('click', function() {
+      StackDepth = '25BB';
+      updatePictureUrls();
+    });
+
+    stack40bbBtn.addEventListener('click', function() {
+      StackDepth = '40BB';
+      updatePictureUrls();
+    });
+
+    stack60bbBtn.addEventListener('click', function() {
+      StackDepth = '60BB';
+      updatePictureUrls();
+    });
+
+    stack100bbBtn.addEventListener('click', function() {
+      StackDepth = '100BB';
+      updatePictureUrls();
+    });
+
+    heroSbBtn.addEventListener('click', function() {
+      HeroPosition = 'SB';
+      updatePictureUrls();
+    });
+
+    heroBbBtn.addEventListener('click', function() {
+      HeroPosition = 'BB';
+      updatePictureUrls();
+    });
+
+    heroBuBtn.addEventListener('click', function() {
+      HeroPosition = 'BU';
+      updatePictureUrls();
+    });
+
+    heroCoBtn.addEventListener('click', function() {
+      HeroPosition = 'CO';
+      updatePictureUrls();
+    });
+
+    heroHjBtn.addEventListener('click', function() {
+      HeroPosition = 'HJ';
+      updatePictureUrls();
+    });
+
+    heroLjBtn.addEventListener('click', function() {
+      HeroPosition = 'LJ';
+      updatePictureUrls();
+    });
+
+    heroUtg2Btn.addEventListener('click', function() {
+      HeroPosition = 'UTG+2';
+      updatePictureUrls();
+    });
+
+    heroUtg1Btn.addEventListener('click', function() {
+      HeroPosition = 'UTG+1';
+      updatePictureUrls();
+    });
+
+    heroUtgBtn.addEventListener('click', function() {
+      HeroPosition = 'UTG';
+      updatePictureUrls();
+    });
+
+    villianSbBtn.addEventListener('click', function() {
+      VillianPosition = 'SB';
+      updatePictureUrls();
+    });
+
+    villianBbBtn.addEventListener('click', function() {
+      VillianPosition = 'BB';
+      updatePictureUrls();
+    });
+
+    villianBuBtn.addEventListener('click', function() {
+      VillianPosition = 'BU';
+      updatePictureUrls();
+    });
+
+    villianCoBtn.addEventListener('click', function() {
+      VillianPosition = 'CO';
+      updatePictureUrls();
+    });
+
+    villianHjBtn.addEventListener('click', function() {
+      VillianPosition = 'HJ';
+      updatePictureUrls();
+    });
+
+    villianLjBtn.addEventListener('click', function() {
+      VillianPosition = 'LJ';
+      updatePictureUrls();
+    });
+
+    villianUtg2Btn.addEventListener('click', function() {
+      VillianPosition = 'UTG+2';
+      updatePictureUrls();
+    });
+
+    villianUtg1Btn.addEventListener('click', function() {
+      VillianPosition = 'UTG+1';
+      updatePictureUrls();
+    });
+
+    villianUtgBtn.addEventListener('click', function() {
+      VillianPosition = 'UTG';
+      updatePictureUrls();
+    });
+
+    function updatePictureUrls() {
+      picture1.src = getPictureUrl();
+      picture2.src = getPictureUrlxd();
+      picture3.src = getPictureUrlxdd();
+      picture4.src = getPictureUrlmao();
+    }
+
+    function getPictureUrl() {
+      let pictureUrl = '';
+      if (Type === 'RFI') {
+        pictureUrl = Type + '_' + StackDepth + '_' + HeroPosition + '.png';
+      } else if (Type === 'Defend') {
+        pictureUrl = Type + '_' + StackDepth + '_' + HeroPosition + '_' + VillianPosition + '.png';
+      }
+      return pictureUrl;
+    }
+
+    function getPictureUrlxd() {
+      let pictureUrlxd = '';
+      if (Type === 'RFI') {
+        pictureUrlxd = Type + '_' + StackDepth + '_' + HeroPosition + '_' + VillianPosition + '_3b.png';
+      } else if (Type === 'Defend') {
+        pictureUrlxd = Type + '_' + StackDepth + '_' + HeroPosition + '_' + VillianPosition + '_4b.png';
+      }
+      return pictureUrlxd;
+    }
+
+    function getPictureUrlxdd() {
+      const pictureUrlxdd = Type + '_' + StackDepth + '_' + HeroPosition + '_' + VillianPosition + '_3bb.png';
+      return pictureUrlxdd;
+    }
+
+    function getPictureUrlmao() {
+      const pictureUrlmao = Type + '_' + StackDepth + '_' + HeroPosition + '_' + VillianPosition + '_5b.png';
+      return pictureUrlmao;
+    }
+
+    // Highlight selected buttons
+
+    var buttons = document.getElementsByTagName('button');
+
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function() {
+    var current = document.getElementsByClassName('active');
+
+    // Check if the clicked button is already active
+    if (this.classList.contains('active')) {
+      this.classList.remove('active');
+    } else {
+      // Remove 'active' class from all buttons in the same row
+      var buttonsInRow = this.parentNode.getElementsByTagName('button');
+      for (var j = 0; j < buttonsInRow.length; j++) {
+        buttonsInRow[j].classList.remove('active');
+      }
+
+      // Add 'active' class to the clicked button
+      this.classList.add('active');
+    }
+  
+  })};
+</script>
+
+
+</body>
+</html>
